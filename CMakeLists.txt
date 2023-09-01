@@ -7,4 +7,4 @@ add_executable(read read.cpp)
 
 target_link_libraries(read sysfsgpio)
 
-#install(TARGETS read DESTINATION bin)
+install(TARGETS read DESTINATION bin)
