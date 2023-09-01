@@ -5,7 +5,7 @@
 //Set GPIO pin number GPIO_PIN as an input and read the current value
 //Change #define GPIO_PIN to a different number to use a different GPIO pin
 
-#include "sysfsgpio.h"
+#include <sysfsgpio.h>
 #include <iostream>
 #include <string>
 
