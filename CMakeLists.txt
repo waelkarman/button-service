@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(read)
+project(zmqread)
 find_package(sysfsgpio)
 
-add_executable(read read.cpp)
+add_executable(zmqread zmqread.cpp)
 
-target_link_libraries(read sysfsgpio)
+target_link_libraries(zmqread sysfsgpio)
 
-install(TARGETS read DESTINATION bin)
+install(TARGETS zmqread DESTINATION bin)
