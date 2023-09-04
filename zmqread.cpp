@@ -13,8 +13,8 @@
 
 int main() {
 
+	int status; //Create a status variable
 	while(1){
-		int status; //Create a status variable
 
 		GPIO gpio_test(GPIO_PIN); //Create a GPIO object
 
