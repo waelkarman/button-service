@@ -8,6 +8,12 @@
 #include <sysfsgpio.h>
 #include <iostream>
 #include <string>
+#include <thread>
+#include <chrono>
+#include <ostream>
+#include <zmq.hpp>
+#include "zhelpers.hpp"
+
 
 #define GPIO_PIN "18" //GPIO pin (BCM number) used as an input
 
@@ -16,6 +22,15 @@ int main() {
 	int status; //Create a status variable
 	GPIO gpio_test(GPIO_PIN); //Create a GPIO object
 	
+
+	zmq::context_t context(1);
+    zmq::socket_t publisher(context, ZMQ_PUB);
+    //  Initialize random number generator
+    srandom ((unsigned) time (NULL));
+	publisher.bind("tcp://*:5556");
+    //  Ensure subscriber connection has time to complete
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
 	while(1){
 		status = gpio_test.setupPin(1); //Create pin
 		if (status != 0) return 1; //Return error code
@@ -29,10 +44,16 @@ int main() {
 
 		if (res == "1") {
 			std::cout << "GPIO pin " << GPIO_PIN << " is HIGH\n";
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+			s_sendmore (publisher, "2");
+			s_send (publisher, "HIGH");
 
 		}
 		else {
 			std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+			s_sendmore (publisher, "2");
+			s_send (publisher, "LOW");
 		}
 		sleep(1);
 	}
