@@ -35,11 +35,11 @@ int main() {
 		else {
 			std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
 		}
-
-		status = gpio_test.setupPin(0); //Disable pin
-		if (status != 0) return 1; //Return error code
 		sleep(1000);
 	}
+		status = gpio_test.setupPin(0); //Disable pin
+		if (status != 0) return 1; //Return error code
+
 	
 	return 0; //Return default code
 }
