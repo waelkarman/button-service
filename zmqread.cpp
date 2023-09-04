@@ -21,13 +21,13 @@ int main() {
 
 	int status; //Create a status variable
 	GPIO gpio_test(GPIO_PIN); //Create a GPIO object
-	
+
 
 	zmq::context_t context(1);
     zmq::socket_t publisher(context, ZMQ_PUB);
     //  Initialize random number generator
     srandom ((unsigned) time (NULL));
-	publisher.bind("tcp://localhost:5554");
+	publisher.bind("tcp://*:5554");
     //  Ensure subscriber connection has time to complete
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
@@ -61,6 +61,6 @@ int main() {
 	status = gpio_test.setupPin(0); //Disable pin
 	if (status != 0) return 1; //Return error code
 
-	
+
 	return 0; //Return default code
 }
