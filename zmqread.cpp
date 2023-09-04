@@ -34,7 +34,7 @@ int main() {
 		else {
 			std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
 		}
-		sleep(1000);
+		sleep(1);
 	}
 
 	status = gpio_test.setupPin(0); //Disable pin
