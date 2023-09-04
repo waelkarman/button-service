@@ -12,32 +12,34 @@
 #define GPIO_PIN "18" //GPIO pin (BCM number) used as an input
 
 int main() {
-	std::cout << "GPIO library example: Reading a GPIO pin\n";
 
-	int status; //Create a status variable
+	while(1){
+		int status; //Create a status variable
 
-	GPIO gpio_test(GPIO_PIN); //Create a GPIO object
+		GPIO gpio_test(GPIO_PIN); //Create a GPIO object
 
-	status = gpio_test.setupPin(1); //Create pin
-	if (status != 0) return 1; //Return error code
+		status = gpio_test.setupPin(1); //Create pin
+		if (status != 0) return 1; //Return error code
 
-	status = gpio_test.setDirection(0); //Set pin direction
-	if (status != 0) return 1; //Return error code
+		status = gpio_test.setDirection(0); //Set pin direction
+		if (status != 0) return 1; //Return error code
 
-	std::string res;
-	status = gpio_test.readValue(&res); //Set pin value
-	if (status != 0) return 1; //Return error code
+		std::string res;
+		status = gpio_test.readValue(&res); //Set pin value
+		if (status != 0) return 1; //Return error code
 
-	if (res == "1") {
-		std::cout << "GPIO pin " << GPIO_PIN << " is HIGH\n";
+		if (res == "1") {
+			std::cout << "GPIO pin " << GPIO_PIN << " is HIGH\n";
 
+		}
+		else {
+			std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
+		}
+
+		status = gpio_test.setupPin(0); //Disable pin
+		if (status != 0) return 1; //Return error code
+		sleep(1000);
 	}
-	else {
-		std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
-	}
-
-	status = gpio_test.setupPin(0); //Disable pin
-	if (status != 0) return 1; //Return error code
-
+	
 	return 0; //Return default code
 }
