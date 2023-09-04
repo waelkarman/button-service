@@ -43,16 +43,16 @@ int main() {
 		if (status != 0) return 1; //Return error code
 
 		if (res == "1") {
-			std::cout << "GPIO pin " << GPIO_PIN << " is HIGH\n";
+			//std::cout << "GPIO pin " << GPIO_PIN << " is HIGH\n";
 			std::this_thread::sleep_for(std::chrono::seconds(1));
-			s_sendmore (publisher, "2");
+			s_sendmore (publisher, "SENSORS");
 			s_send (publisher, "HIGH");
 
 		}
 		else {
-			std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
+			//std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
 			std::this_thread::sleep_for(std::chrono::seconds(1));
-			s_sendmore (publisher, "2");
+			s_sendmore (publisher, "SENSORS");
 			s_send (publisher, "LOW");
 		}
 		sleep(1);
