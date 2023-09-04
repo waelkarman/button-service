@@ -46,13 +46,12 @@ int main() {
 		if (res == "1") {
 			//std::cout << "GPIO pin " << GPIO_PIN << " is HIGH\n";
 			s_send (publisher, "HIGH");
-
 		}
 		else {
 			//std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
 			s_send (publisher, "LOW");
 		}
-		sleep(1);
+		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 
 	status = gpio_test.setupPin(0); //Disable pin
