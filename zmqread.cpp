@@ -14,10 +14,9 @@
 int main() {
 
 	int status; //Create a status variable
-	while(1){
-
-		GPIO gpio_test(GPIO_PIN); //Create a GPIO object
-
+	GPIO gpio_test(GPIO_PIN); //Create a GPIO object
+	
+	while(1){}
 		status = gpio_test.setupPin(1); //Create pin
 		if (status != 0) return 1; //Return error code
 
@@ -37,8 +36,9 @@ int main() {
 		}
 		sleep(1000);
 	}
-		status = gpio_test.setupPin(0); //Disable pin
-		if (status != 0) return 1; //Return error code
+
+	status = gpio_test.setupPin(0); //Disable pin
+	if (status != 0) return 1; //Return error code
 
 	
 	return 0; //Return default code
