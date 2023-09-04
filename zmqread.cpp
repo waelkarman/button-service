@@ -27,7 +27,7 @@ int main() {
     zmq::socket_t publisher(context, ZMQ_PUB);
     //  Initialize random number generator
     srandom ((unsigned) time (NULL));
-	publisher.bind("tcp://*:5556");
+	publisher.bind("tcp://localhost:5554");
     //  Ensure subscriber connection has time to complete
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
