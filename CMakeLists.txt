@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(zmqread)
+project(gpio-read-sysfs-service)
 find_package(sysfsgpio)
 find_package(cppzmq)
 find_package(zmqpp)
 find_package(zmq)
 
-add_executable(zmqread zhelpers.hpp zmqread.cpp)
+add_executable(gpio-read-sysfs-service zhelpers.hpp gpio-read-sysfs-service.cpp)
 
-target_link_libraries(zmqread sysfsgpio cppzmq zmqpp zmq)
+target_link_libraries(gpio-read-sysfs-service sysfsgpio cppzmq zmqpp zmq)
 
-install(TARGETS zmqread DESTINATION bin)
+install(TARGETS gpio-read-sysfs-service DESTINATION bin)
