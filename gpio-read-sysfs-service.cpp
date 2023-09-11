@@ -46,14 +46,14 @@ int main() {
 			//std::cout << "GPIO pin " << GPIO_PIN << " is HIGH\n";
 			std::this_thread::sleep_for(std::chrono::seconds(1));
 			s_sendmore (publisher, "BUTTON");
-			s_send (publisher, "HIGH");
+			s_send (publisher, "Button RELEASED");
 
 		}
 		else {
 			//std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
 			std::this_thread::sleep_for(std::chrono::seconds(1));
 			s_sendmore (publisher, "BUTTON");
-			s_send (publisher, "LOW");
+			s_send (publisher, "Button PRESSED");
 		}
 	}
 
