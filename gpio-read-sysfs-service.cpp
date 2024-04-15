@@ -29,14 +29,14 @@ int main() {
     srandom ((unsigned) time (NULL));
 	publisher.bind("tcp://*:5554");
     //  Ensure subscriber connection has time to complete
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    //std::this_thread::sleep_for(std::chrono::seconds(1));
+	status = gpio_test.setupPin(1); //Create pin
+	if (status != 0) return 1; //Return error code
 
+	status = gpio_test.setDirection(0); //Set pin direction
+	if (status != 0) return 1; //Return error code
 	while(1){
-		status = gpio_test.setupPin(1); //Create pin
-		if (status != 0) return 1; //Return error code
-
-		status = gpio_test.setDirection(0); //Set pin direction
-		if (status != 0) return 1; //Return error code
+		
 
 		std::string res;
 		status = gpio_test.readValue(&res); //Set pin value
@@ -44,14 +44,14 @@ int main() {
 
 		if (res == "1") {
 			//std::cout << "GPIO pin " << GPIO_PIN << " is HIGH\n";
-			std::this_thread::sleep_for(std::chrono::seconds(1));
+			//std::this_thread::sleep_for(std::chrono::seconds(1));
 			s_sendmore (publisher, "BUTTON");
 			s_send (publisher, "Button RELEASED");
 
 		}
 		else {
 			//std::cout << "GPIO pin " << GPIO_PIN << " is LOW\n";
-			std::this_thread::sleep_for(std::chrono::seconds(1));
+			//std::this_thread::sleep_for(std::chrono::seconds(1));
 			s_sendmore (publisher, "BUTTON");
 			s_send (publisher, "Button PRESSED");
 		}
