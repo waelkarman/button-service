@@ -55,6 +55,7 @@ int main() {
 			s_sendmore (publisher, "BUTTON");
 			s_send (publisher, "Button PRESSED");
 		}
+		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 
 	status = gpio_test.setupPin(0); //Disable pin
