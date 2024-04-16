@@ -28,9 +28,9 @@ int main() {
 	publisher.bind("tcp://*:5554");
 	status = gpio_test.setupPin(1);
 	if (status != 0) return 1;
-
 	status = gpio_test.setDirection(0);
 	if (status != 0) return 1; 
+
 	while(1){
 		std::string res;
 		status = gpio_test.readValue(&res); 
