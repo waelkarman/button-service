@@ -8,7 +8,7 @@
 #include "zhelpers.hpp"
 
 
-#define GPIO_PIN "18"
+#define GPIO_PIN "530" // controller 512 + pin 18 = 530
 
 int main() {
 	int status; 
