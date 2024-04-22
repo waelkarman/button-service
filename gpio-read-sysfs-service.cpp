@@ -1,10 +1,3 @@
-//Copyright (c) 2019, Alex Mous
-//Licensed under the Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-4.0)
-
-//Example code for reading a GPIO pin
-//Set GPIO pin number GPIO_PIN as an input and read the current value
-//Change #define GPIO_PIN to a different number to use a different GPIO pin
-
 #include <sysfsgpio.h>
 #include <iostream>
 #include <string>
